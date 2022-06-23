@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import '../providers/product_provider.dart';
 
-import '../models/product.dart';
 import 'product_tile.dart';
 
 class ProductGrid extends StatelessWidget {
   const ProductGrid({
     Key? key,
-    required this.products,
   }) : super(key: key);
-
-  final List<Product> products;
 
   @override
   Widget build(BuildContext context) {
+    final products = ProductProvider.fetchProducts();
     return GridView.builder(
       itemCount: products.length,
       itemBuilder: (context, index) => ProductTile(
