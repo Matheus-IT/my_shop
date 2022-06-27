@@ -11,13 +11,14 @@ class ProductGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductProvider>(context);
+    final provider = Provider.of<ProductProvider>(context, listen: false);
     final products = provider.products;
 
     return GridView.builder(
       itemCount: products.length,
-      itemBuilder: (context, index) => ProductTile(
-        products[index],
+      itemBuilder: (context, index) => ChangeNotifierProvider.value(
+        value: products[index],
+        child: const ProductTile(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

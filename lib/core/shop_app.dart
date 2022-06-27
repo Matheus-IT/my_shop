@@ -24,8 +24,8 @@ class ShopApp extends StatelessWidget {
         ),
         initialRoute: AppRoutes.productOverview,
         routes: {
-          AppRoutes.productOverview: (context) => ProductOverviewPage(),
-          AppRoutes.productDetail: (context) => ProductDetailPage(),
+          AppRoutes.productOverview: (_) => ProductOverviewPage(),
+          AppRoutes.productDetail: (_) => ProductDetailPage(),
         },
       ),
     );
