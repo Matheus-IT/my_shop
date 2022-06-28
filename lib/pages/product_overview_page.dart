@@ -6,7 +6,14 @@ import '../widgets/product_grid.dart';
 
 enum FavoriteOption { favorite, all }
 
-class ProductOverviewPage extends StatelessWidget {
+class ProductOverviewPage extends StatefulWidget {
+  @override
+  State<ProductOverviewPage> createState() => _ProductOverviewPageState();
+}
+
+class _ProductOverviewPageState extends State<ProductOverviewPage> {
+  bool _favoritesOnly = false;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductProvider>(context);
@@ -27,17 +34,15 @@ class ProductOverviewPage extends StatelessWidget {
               ),
             ],
             onSelected: (option) {
-              if (option == FavoriteOption.favorite) {
-                provider.favoriteOnly(true);
-              } else {
-                provider.favoriteOnly(false);
-              }
+              setState(() {
+                _favoritesOnly = option == FavoriteOption.favorite;
+              });
               debugPrint(option.toString());
             },
           ),
         ],
       ),
-      body: const ProductGrid(),
+      body: ProductGrid(favoritesOnly: _favoritesOnly),
     );
   }
 }
