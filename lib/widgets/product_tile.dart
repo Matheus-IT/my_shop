@@ -10,7 +10,7 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final secondaryColor = Theme.of(context).colorScheme.secondary;
-    final Product product = Provider.of<Product>(context, listen: false);
+    final Product product = Provider.of<Product>(context);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
