@@ -16,7 +16,7 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductProvider>(context);
+    final hint = _favoritesOnly ? 'todos' : 'favoritos';
 
     return Scaffold(
       appBar: AppBar(
@@ -26,6 +26,7 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
             onPressed: () {
               setState(() => _favoritesOnly = !_favoritesOnly);
             },
+            tooltip: 'Clique para exibir $hint',
             icon: Icon(
               _favoritesOnly ? Icons.favorite : Icons.favorite_border,
             ),
