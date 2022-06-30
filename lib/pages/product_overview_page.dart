@@ -22,23 +22,13 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
       appBar: AppBar(
         title: const Text('Loja Exemplo'),
         actions: [
-          PopupMenuButton<FavoriteOption>(
-            itemBuilder: (_) => [
-              const PopupMenuItem(
-                value: FavoriteOption.favorite,
-                child: Text('Favoritos'),
-              ),
-              const PopupMenuItem(
-                value: FavoriteOption.all,
-                child: Text('Todos'),
-              ),
-            ],
-            onSelected: (option) {
-              setState(() {
-                _favoritesOnly = option == FavoriteOption.favorite;
-              });
-              debugPrint(option.toString());
+          IconButton(
+            onPressed: () {
+              setState(() => _favoritesOnly = !_favoritesOnly);
             },
+            icon: Icon(
+              _favoritesOnly ? Icons.favorite : Icons.favorite_border,
+            ),
           ),
         ],
       ),
@@ -46,3 +36,22 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
     );
   }
 }
+
+//PopupMenuButton<FavoriteOption>(
+//  itemBuilder: (_) => [
+//    const PopupMenuItem(
+//      value: FavoriteOption.favorite,
+//      child: Text('Favoritos'),
+//    ),
+//    const PopupMenuItem(
+//      value: FavoriteOption.all,
+//      child: Text('Todos'),
+//    ),
+//  ],
+//  onSelected: (option) {
+//    setState(() {
+//      _favoritesOnly = option == FavoriteOption.favorite;
+//    });
+//    debugPrint(option.toString());
+//  },
+//),
