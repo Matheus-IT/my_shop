@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/core/app_routes.dart';
+import 'package:shop_app/providers/cart_provider.dart';
 import 'package:shop_app/widgets/badge_cart.dart';
 
 import '../widgets/product_grid.dart';
@@ -30,12 +33,20 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
               _favoritesOnly ? Icons.favorite : Icons.favorite_border,
             ),
           ),
-          BadgeCart(
-              value: 7,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.shopping_cart),
-              )),
+          Consumer<CartProvider>(
+            builder: (context, cart, child) {
+              return BadgeCart(
+                value: cart.itemCount,
+                child: IconButton(
+                  onPressed: () => Navigator.of(context).pushNamed(
+                    AppRoutes.cart,
+                  ),
+                  tooltip: 'R\$${cart.total.toStringAsFixed(2)} no total',
+                  icon: const Icon(Icons.shopping_cart),
+                ),
+              );
+            },
+          ),
         ],
       ),
       body: ProductGrid(favoritesOnly: _favoritesOnly),
@@ -43,6 +54,7 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
   }
 }
 
+// Old implementation:
 //PopupMenuButton<FavoriteOption>(
 //  itemBuilder: (_) => [
 //    const PopupMenuItem(

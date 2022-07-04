@@ -4,8 +4,13 @@ import 'package:shop_app/models/product.dart';
 
 class CartProvider extends ChangeNotifier {
   final Map<int, CartItem> _cart = {};
-
   int get itemCount => _cart.length;
+
+  double get total {
+    double sum = 0.0;
+    _cart.forEach((key, item) => sum += item.price * item.quantity);
+    return sum;
+  }
 
   void addItem(Product product) {
     // Long implementation:
@@ -25,5 +30,6 @@ class CartProvider extends ChangeNotifier {
       (cartItem) => CartItem.from(cartItem, newQuantity: cartItem.quantity + 1),
       ifAbsent: () => CartItem.fromProduct(product),
     );
+    notifyListeners();
   }
 }
