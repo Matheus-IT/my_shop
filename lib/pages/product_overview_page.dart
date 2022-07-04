@@ -36,7 +36,7 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
           Consumer<CartProvider>(
             builder: (context, cart, child) {
               return BadgeCart(
-                value: cart.itemCount,
+                value: cart.quantityCount,
                 child: IconButton(
                   onPressed: () => Navigator.of(context).pushNamed(
                     AppRoutes.cart,
