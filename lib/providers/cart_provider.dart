@@ -5,6 +5,8 @@ import 'package:shop_app/models/product.dart';
 class CartProvider extends ChangeNotifier {
   final Map<int, CartItem> _cart = {};
 
+  int get itemCount => _cart.length;
+
   void addItem(Product product) {
     // Long implementation:
     //if (_cart.containsKey(product.id)) {
@@ -23,7 +25,5 @@ class CartProvider extends ChangeNotifier {
       (cartItem) => CartItem.from(cartItem, newQuantity: cartItem.quantity + 1),
       ifAbsent: () => CartItem.fromProduct(product),
     );
-
-    notifyListeners();
   }
 }

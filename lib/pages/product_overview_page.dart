@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app/providers/product_provider.dart';
+import 'package:shop_app/widgets/badge_cart.dart';
 
 import '../widgets/product_grid.dart';
 
@@ -31,6 +30,12 @@ class _ProductOverviewPageState extends State<ProductOverviewPage> {
               _favoritesOnly ? Icons.favorite : Icons.favorite_border,
             ),
           ),
+          BadgeCart(
+              value: 7,
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.shopping_cart),
+              )),
         ],
       ),
       body: ProductGrid(favoritesOnly: _favoritesOnly),
