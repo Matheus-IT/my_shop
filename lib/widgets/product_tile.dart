@@ -11,8 +11,8 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final secondaryColor = Theme.of(context).colorScheme.secondary;
-    final Product product = Provider.of<Product>(context);
-    final cart = Provider.of<CartProvider>(context);
+    final Product product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<CartProvider>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
