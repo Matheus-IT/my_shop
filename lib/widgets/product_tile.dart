@@ -36,7 +36,6 @@ class ProductTile extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product);
-              print(cart.itemCount);
             },
             icon: const Icon(Icons.shopping_cart),
             color: secondaryColor,

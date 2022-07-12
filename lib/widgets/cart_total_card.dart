@@ -11,6 +11,12 @@ class CartTotalCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.only(
+        top: 10.0,
+        bottom: 15.0,
+        left: 15.0,
+        right: 15.0,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:shop_app/models/product_model.dart';
 
 class CartModel {
-  final itemId;
+  final int itemId;
   final int productId;
   final String name;
   final int quantity;
