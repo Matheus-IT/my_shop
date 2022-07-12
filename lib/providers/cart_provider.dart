@@ -6,6 +6,8 @@ class CartProvider extends ChangeNotifier {
   final Map<int, CartItem> _cart = {};
   int get itemCount => _cart.length;
 
+  Map<int, CartItem> get items => _cart;
+
   int get quantityCount {
     int sum = 0;
     _cart.forEach((_, item) => sum += item.quantity);
