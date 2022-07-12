@@ -31,7 +31,7 @@ class CartTotalCard extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.primary,
               label: Consumer<CartProvider>(
                 builder: (_, cartProvider, __) => Text(
-                  'R\$ ${cartProvider.total}',
+                  'R\$ ${cartProvider.total.toStringAsFixed(2)}',
                   style: const TextStyle(
                     color: Colors.white,
                   ),
