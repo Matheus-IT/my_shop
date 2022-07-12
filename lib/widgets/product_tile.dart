@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cart_provider.dart';
 
 import '../core/app_routes.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 
 class ProductTile extends StatelessWidget {
   const ProductTile();
@@ -11,7 +11,8 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final secondaryColor = Theme.of(context).colorScheme.secondary;
-    final Product product = Provider.of<Product>(context, listen: false);
+    final ProductModel product =
+        Provider.of<ProductModel>(context, listen: false);
     final cart = Provider.of<CartProvider>(context, listen: false);
 
     return ClipRRect(
@@ -19,7 +20,7 @@ class ProductTile extends StatelessWidget {
       child: GridTile(
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: Consumer<Product>(
+          leading: Consumer<ProductModel>(
             builder: (context, product, _) {
               return IconButton(
                 onPressed: product.toggleFavorite,

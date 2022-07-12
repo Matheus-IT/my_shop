@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/cart_item.dart';
-import 'package:shop_app/models/product.dart';
+import 'package:shop_app/models/cart_model.dart';
+import 'package:shop_app/models/product_model.dart';
 
 class CartProvider extends ChangeNotifier {
-  final Map<int, CartItem> _cart = {};
+  final Map<int, CartModel> _cart = {};
   int get itemCount => _cart.length;
 
-  Map<int, CartItem> get items => _cart;
+  Map<int, CartModel> get items => _cart;
 
   int get quantityCount {
     int sum = 0;
@@ -20,7 +20,7 @@ class CartProvider extends ChangeNotifier {
     return sum;
   }
 
-  void addItem(Product product) {
+  void addItem(ProductModel product) {
     // Long implementation:
     //if (_cart.containsKey(product.id)) {
     //  _cart.update(
@@ -35,8 +35,9 @@ class CartProvider extends ChangeNotifier {
     // Short implementation:
     _cart.update(
       product.id,
-      (cartItem) => CartItem.from(cartItem, newQuantity: cartItem.quantity + 1),
-      ifAbsent: () => CartItem.fromProduct(product),
+      (cartItem) =>
+          CartModel.from(cartItem, newQuantity: cartItem.quantity + 1),
+      ifAbsent: () => CartModel.fromProduct(product),
     );
     notifyListeners();
   }
